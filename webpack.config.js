@@ -2,10 +2,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = [
     {
-        entry: './index.js'
+        entry: './client/index.js',
         output: {
             path: './public',
-            filename: 'build.js'
+            filename: 'bundle.js'
         },
         module: {
             loaders: [
@@ -21,7 +21,7 @@ module.exports = [
         }
     },
     {
-        entry: './stylesheets/main.scss',
+        entry: './client/stylesheets/main.scss',
         output: {
             path: './public',
             filename: 'main.css'
