@@ -21431,6 +21431,10 @@
 
 	var _reactRouter = __webpack_require__(173);
 
+	var _Main = __webpack_require__(240);
+
+	var _Main2 = _interopRequireDefault(_Main);
+
 	var _HomeContainer = __webpack_require__(236);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
@@ -21458,7 +21462,11 @@
 	            return _react2.default.createElement(
 	                _reactRouter.Router,
 	                { history: _reactRouter.browserHistory },
-	                _react2.default.createElement(_reactRouter.Route, { path: '/', component: _HomeContainer2.default })
+	                _react2.default.createElement(
+	                    _reactRouter.Route,
+	                    { path: '/', component: _Main2.default },
+	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default })
+	                )
 	            );
 	        }
 	    }]);
@@ -27135,10 +27143,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Header = __webpack_require__(237);
-
-	var _Header2 = _interopRequireDefault(_Header);
-
 	var _RadiusInput = __webpack_require__(238);
 
 	var _RadiusInput2 = _interopRequireDefault(_RadiusInput);
@@ -27170,7 +27174,6 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_Header2.default, null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'mdl-grid' },
@@ -27316,6 +27319,37 @@
 	};
 
 	exports.default = TypeInput;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Header = __webpack_require__(237);
+
+	var _Header2 = _interopRequireDefault(_Header);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Main = function Main(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_Header2.default, null),
+	        props.children
+	    );
+	};
+
+	exports.default = Main;
 
 /***/ }
 /******/ ]);
