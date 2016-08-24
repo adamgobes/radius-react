@@ -1,2 +1,25 @@
-body {
-  background: red; }
+.radius-input-cirlce {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  border-radius: 100%;
+  background-color: #F44336;
+  box-shadow: 4px 6px 31px #333333; }
+  .radius-input-cirlce .circle-header {
+    position: relative;
+    top: 20%;
+    text-align: center;
+    margin-bottom: -18px; }
+    .radius-input-cirlce .circle-header h4 {
+      display: inline; }
+  .radius-input-cirlce .radius-input {
+    text-align: center; }
+    .radius-input-cirlce .radius-input input {
+      font-size: 2em;
+      width: 100px;
+      text-align: center; }
+  .radius-input-cirlce .find-btn {
+    text-align: center; }
+
+*:not(i) {
+  font-family: 'Raleway' !important; }

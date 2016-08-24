@@ -21419,6 +21419,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -21453,7 +21457,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                _reactRouter.Router,
-	                null,
+	                { history: _reactRouter.browserHistory },
 	                _react2.default.createElement(_reactRouter.Route, { path: '/', component: _HomeContainer2.default })
 	            );
 	        }
@@ -21462,7 +21466,7 @@
 	    return AppRouter;
 	}(_react2.default.Component);
 
-	module.exports = AppRouter;
+	exports.default = AppRouter;
 
 /***/ },
 /* 173 */
@@ -27121,11 +27125,27 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _Header = __webpack_require__(237);
+
+	var _Header2 = _interopRequireDefault(_Header);
+
+	var _RadiusInput = __webpack_require__(238);
+
+	var _RadiusInput2 = _interopRequireDefault(_RadiusInput);
+
+	var _TypeInput = __webpack_require__(239);
+
+	var _TypeInput2 = _interopRequireDefault(_TypeInput);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27150,10 +27170,12 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
+	                _react2.default.createElement(_Header2.default, null),
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Home container'
+	                    'div',
+	                    { className: 'mdl-grid' },
+	                    _react2.default.createElement(_RadiusInput2.default, null),
+	                    _react2.default.createElement(_TypeInput2.default, null)
 	                )
 	            );
 	        }
@@ -27162,7 +27184,138 @@
 	    return HomeContainer;
 	}(_react2.default.Component);
 
-	module.exports = HomeContainer;
+	exports.default = HomeContainer;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Header = function Header(props) {
+	    return _react2.default.createElement(
+	        "header",
+	        { className: "mdl-layout__header" },
+	        _react2.default.createElement(
+	            "div",
+	            { className: "mdl-layout__header-row" },
+	            _react2.default.createElement(
+	                "span",
+	                { className: "mdl-layout-title" },
+	                "Radius"
+	            ),
+	            _react2.default.createElement("div", { className: "mdl-layout-spacer" }),
+	            _react2.default.createElement(
+	                "nav",
+	                { className: "mdl-navigation" },
+	                _react2.default.createElement(
+	                    "a",
+	                    { className: "mdl-navigation__link", href: "" },
+	                    "About"
+	                ),
+	                _react2.default.createElement(
+	                    "a",
+	                    { className: "mdl-navigation__link", href: "" },
+	                    "Your Places"
+	                )
+	            )
+	        )
+	    );
+	};
+
+	exports.default = Header;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var RadiusInput = function RadiusInput(props) {
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "radius-input-cirlce mdl-cell mdl-cell--6-col" },
+	        _react2.default.createElement(
+	            "div",
+	            { className: "circle-header" },
+	            _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                    "i",
+	                    { className: "material-icons" },
+	                    "local_dining"
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            { className: "radius-input" },
+	            _react2.default.createElement("input", { type: "number" })
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            { className: "find-btn" },
+	            _react2.default.createElement(
+	                "button",
+	                { id: "generate", className: "btn waves-effect waves-light" },
+	                "Find"
+	            )
+	        )
+	    );
+	};
+
+	exports.default = RadiusInput;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TypeInput = function TypeInput(props) {
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "mdl-cell mdl-cell--6-col" },
+	        _react2.default.createElement(
+	            "h1",
+	            null,
+	            "Type Input"
+	        )
+	    );
+	};
+
+	exports.default = TypeInput;
 
 /***/ }
 /******/ ]);
