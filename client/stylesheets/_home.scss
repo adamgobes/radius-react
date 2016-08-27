@@ -1,0 +1,74 @@
+.radius-input-circle {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: 4px 6px 31px #333333;
+    .circle-header {
+        position: relative;
+        top: 20%;
+        text-align: center;
+        margin-bottom: -18px;
+        h4 {
+            display: inline;
+        }
+    }
+
+    .radius-input {
+        position: relative;
+        top: 136px;
+        text-align: center;
+        input[type='number'] {
+            font-size: 2em;
+            width: 100px;
+            text-align: center;
+            background-color: white;
+            color: $primary-color;
+            border: none;
+            border-bottom: 1px solid $primary-color;
+            &:focus {
+                outline-width: 0;
+            }
+        }
+    }
+}
+
+.type-input {
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    div {
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px;
+        width: 52px;
+        height: 52px;
+        border: 1px solid white;
+        border-radius: 100%;
+        a {
+            position: relative;
+            text-align: center;
+            top: 26%;
+            left: 24%;
+            i {
+                font-size: 2em;
+            }
+        }
+    }
+}
+
+.submit-btn-container {
+    width: 300px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    button {
+        width: 100px;
+        background-color: white;
+        &:hover {
+            background-color: white;
+        }
+    }
+}

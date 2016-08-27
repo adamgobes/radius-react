@@ -21431,11 +21431,11 @@
 
 	var _reactRouter = __webpack_require__(173);
 
-	var _Main = __webpack_require__(240);
+	var _Main = __webpack_require__(236);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _HomeContainer = __webpack_require__(236);
+	var _HomeContainer = __webpack_require__(238);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
@@ -27137,57 +27137,26 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RadiusInput = __webpack_require__(238);
+	var _Header = __webpack_require__(237);
 
-	var _RadiusInput2 = _interopRequireDefault(_RadiusInput);
-
-	var _TypeInput = __webpack_require__(239);
-
-	var _TypeInput2 = _interopRequireDefault(_TypeInput);
+	var _Header2 = _interopRequireDefault(_Header);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var Main = function Main(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_Header2.default, null),
+	        props.children
+	    );
+	};
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var HomeContainer = function (_React$Component) {
-	    _inherits(HomeContainer, _React$Component);
-
-	    function HomeContainer() {
-	        _classCallCheck(this, HomeContainer);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeContainer).apply(this, arguments));
-	    }
-
-	    _createClass(HomeContainer, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'mdl-grid' },
-	                    _react2.default.createElement(_RadiusInput2.default, null),
-	                    _react2.default.createElement(_TypeInput2.default, null)
-	                )
-	            );
-	        }
-	    }]);
-
-	    return HomeContainer;
-	}(_react2.default.Component);
-
-	exports.default = HomeContainer;
+	exports.default = Main;
 
 /***/ },
 /* 237 */
@@ -27242,53 +27211,68 @@
 /* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _RadiusInput = __webpack_require__(239);
+
+	var _RadiusInput2 = _interopRequireDefault(_RadiusInput);
+
+	var _TypeInput = __webpack_require__(240);
+
+	var _TypeInput2 = _interopRequireDefault(_TypeInput);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var RadiusInput = function RadiusInput(props) {
-	    return _react2.default.createElement(
-	        "div",
-	        { className: "radius-input-cirlce mdl-cell mdl-cell--6-col" },
-	        _react2.default.createElement(
-	            "div",
-	            { className: "circle-header" },
-	            _react2.default.createElement(
-	                "a",
-	                null,
-	                _react2.default.createElement(
-	                    "i",
-	                    { className: "material-icons" },
-	                    "local_dining"
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            { className: "radius-input" },
-	            _react2.default.createElement("input", { type: "number" })
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            { className: "find-btn" },
-	            _react2.default.createElement(
-	                "button",
-	                { id: "generate", className: "btn waves-effect waves-light" },
-	                "Find"
-	            )
-	        )
-	    );
-	};
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	exports.default = RadiusInput;
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var HomeContainer = function (_React$Component) {
+	    _inherits(HomeContainer, _React$Component);
+
+	    function HomeContainer() {
+	        _classCallCheck(this, HomeContainer);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeContainer).apply(this, arguments));
+	    }
+
+	    _createClass(HomeContainer, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'home-container' },
+	                _react2.default.createElement(_RadiusInput2.default, null),
+	                _react2.default.createElement(_TypeInput2.default, null),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'submit-btn-container' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' },
+	                        'Find'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return HomeContainer;
+	}(_react2.default.Component);
+
+	exports.default = HomeContainer;
 
 /***/ },
 /* 239 */
@@ -27306,25 +27290,25 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var TypeInput = function TypeInput(props) {
+	var RadiusInput = function RadiusInput(props) {
 	    return _react2.default.createElement(
 	        "div",
-	        { className: "mdl-cell mdl-cell--6-col" },
+	        { className: "radius-input-circle" },
 	        _react2.default.createElement(
-	            "h1",
-	            null,
-	            "Type Input"
+	            "div",
+	            { className: "radius-input" },
+	            _react2.default.createElement("input", { type: "number", value: "100" })
 	        )
 	    );
 	};
 
-	exports.default = TypeInput;
+	exports.default = RadiusInput;
 
 /***/ },
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -27334,22 +27318,81 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Header = __webpack_require__(237);
-
-	var _Header2 = _interopRequireDefault(_Header);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Main = function Main(props) {
+	var TypeInput = function TypeInput(props) {
 	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_Header2.default, null),
-	        props.children
+	        "div",
+	        { className: "type-input mdl-cell mdl-cell--6-col" },
+	        _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                    "i",
+	                    { className: "material-icons" },
+	                    "local_dining"
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                    "i",
+	                    { className: "material-icons" },
+	                    "local_convenience_store"
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                    "i",
+	                    { className: "material-icons" },
+	                    "directions_railway"
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                    "i",
+	                    { className: "material-icons" },
+	                    "local_bar"
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                    "i",
+	                    { className: "material-icons" },
+	                    "local_cafe"
+	                )
+	            )
+	        )
 	    );
 	};
 
-	exports.default = Main;
+	exports.default = TypeInput;
 
 /***/ }
 /******/ ]);

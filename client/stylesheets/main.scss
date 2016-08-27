@@ -1,4 +1,13 @@
-@import './_radiusInput.scss';
+@import './_utilities.scss';
+@import './_home.scss';
+
+html, body {
+    background-color: $primary-color;
+}
+
+header {
+    box-shadow: none !important;
+}
 
 *:not(i) {
     font-family: 'Raleway' !important;
