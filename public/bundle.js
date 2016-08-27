@@ -27245,17 +27245,37 @@
 	    function HomeContainer() {
 	        _classCallCheck(this, HomeContainer);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeContainer).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HomeContainer).call(this));
+
+	        _this.state = {
+	            radius: 100,
+	            type: "restaurant"
+	        };
+	        _this.handleRadiusChange = _this.handleRadiusChange.bind(_this);
+	        _this.handleTypeChange = _this.handleTypeChange.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(HomeContainer, [{
+	        key: 'handleRadiusChange',
+	        value: function handleRadiusChange(e) {
+	            this.setState({
+	                radius: e.target.value
+	            });
+	        }
+	    }, {
+	        key: 'handleTypeChange',
+	        value: function handleTypeChange(e) {
+	            console.log(e.target.innerHTML);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'home-container' },
-	                _react2.default.createElement(_RadiusInput2.default, null),
-	                _react2.default.createElement(_TypeInput2.default, null),
+	                _react2.default.createElement(_RadiusInput2.default, { radius: this.state.radius, onRadiusChange: this.handleRadiusChange }),
+	                _react2.default.createElement(_TypeInput2.default, { type: this.state.type, onTypeChange: this.handleTypeChange }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'submit-btn-container' },
@@ -27297,7 +27317,7 @@
 	        _react2.default.createElement(
 	            "div",
 	            { className: "radius-input" },
-	            _react2.default.createElement("input", { type: "number", value: "100" })
+	            _react2.default.createElement("input", { type: "number", defaultValue: "100", onChange: props.onRadiusChange })
 	        )
 	    );
 	};
@@ -27326,7 +27346,7 @@
 	        { className: "type-input mdl-cell mdl-cell--6-col" },
 	        _react2.default.createElement(
 	            "div",
-	            null,
+	            { onClick: props.onTypeChange },
 	            _react2.default.createElement(
 	                "a",
 	                null,

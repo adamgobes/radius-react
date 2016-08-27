@@ -3,7 +3,7 @@ import React from 'react';
 const TypeInput = (props) => {
     return (
         <div className="type-input mdl-cell mdl-cell--6-col">
-            <div>
+            <div onClick={props.onTypeChange}>
                 <a><i className="material-icons">local_dining</i></a>
             </div>
             <div>
