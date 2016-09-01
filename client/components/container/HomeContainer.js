@@ -7,10 +7,11 @@ class HomeContainer extends React.Component {
         super()
         this.state = {
             radius: 100,
-            type: "restaurant"
+            type: ""
         }
         this.handleRadiusChange = this.handleRadiusChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     handleRadiusChange(e) {
@@ -20,7 +21,15 @@ class HomeContainer extends React.Component {
     }
 
     handleTypeChange(e) {
-        console.log(e.target.innerHTML);
+        $('.type-div').not(e.target).css("background", "#F44336");
+        $(e.target).parent().parent().css("background", "white");
+        this.setState({
+            type: e.target.innerHTML
+        });
+    }
+
+    handleSearch(e) {
+        console.log(this.state.radius, this.state.type);
     }
 
     render() {
@@ -29,7 +38,9 @@ class HomeContainer extends React.Component {
                 <RadiusInput radius={this.state.radius} onRadiusChange={this.handleRadiusChange} />
                 <TypeInput type={this.state.type} onTypeChange={this.handleTypeChange} />
                 <div className="submit-btn-container">
-                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Find</button>
+                    <button
+                        className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                        onClick={this.handleSearch}>Find</button>
                 </div>
             </div>
         );

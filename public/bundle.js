@@ -27249,10 +27249,11 @@
 
 	        _this.state = {
 	            radius: 100,
-	            type: "restaurant"
+	            type: ""
 	        };
 	        _this.handleRadiusChange = _this.handleRadiusChange.bind(_this);
 	        _this.handleTypeChange = _this.handleTypeChange.bind(_this);
+	        _this.handleSearch = _this.handleSearch.bind(_this);
 	        return _this;
 	    }
 
@@ -27266,7 +27267,16 @@
 	    }, {
 	        key: 'handleTypeChange',
 	        value: function handleTypeChange(e) {
-	            console.log(e.target.innerHTML);
+	            $('.type-div').not(e.target).css("background", "#F44336");
+	            $(e.target).parent().parent().css("background", "white");
+	            this.setState({
+	                type: e.target.innerHTML
+	            });
+	        }
+	    }, {
+	        key: 'handleSearch',
+	        value: function handleSearch(e) {
+	            console.log(this.state.radius, this.state.type);
 	        }
 	    }, {
 	        key: 'render',
@@ -27281,7 +27291,9 @@
 	                    { className: 'submit-btn-container' },
 	                    _react2.default.createElement(
 	                        'button',
-	                        { className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' },
+	                        {
+	                            className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+	                            onClick: this.handleSearch },
 	                        'Find'
 	                    )
 	                )
@@ -27328,7 +27340,7 @@
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -27338,81 +27350,58 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _placeTypes = __webpack_require__(241);
+
+	var _placeTypes2 = _interopRequireDefault(_placeTypes);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var TypeInput = function TypeInput(props) {
+	    var types = [];
+	    var key = 0;
+	    for (var place in _placeTypes2.default) {
+	        types.push(_react2.default.createElement(
+	            'div',
+	            { className: 'type-div', key: key },
+	            _react2.default.createElement(
+	                'a',
+	                { onClick: props.onTypeChange },
+	                _react2.default.createElement(
+	                    'i',
+	                    { className: 'material-icons' },
+	                    _placeTypes2.default[place]
+	                )
+	            )
+	        ));
+	        key += 1;
+	    }
 	    return _react2.default.createElement(
-	        "div",
-	        { className: "type-input mdl-cell mdl-cell--6-col" },
-	        _react2.default.createElement(
-	            "div",
-	            { onClick: props.onTypeChange },
-	            _react2.default.createElement(
-	                "a",
-	                null,
-	                _react2.default.createElement(
-	                    "i",
-	                    { className: "material-icons" },
-	                    "local_dining"
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	                "a",
-	                null,
-	                _react2.default.createElement(
-	                    "i",
-	                    { className: "material-icons" },
-	                    "local_convenience_store"
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	                "a",
-	                null,
-	                _react2.default.createElement(
-	                    "i",
-	                    { className: "material-icons" },
-	                    "directions_railway"
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	                "a",
-	                null,
-	                _react2.default.createElement(
-	                    "i",
-	                    { className: "material-icons" },
-	                    "local_bar"
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	                "a",
-	                null,
-	                _react2.default.createElement(
-	                    "i",
-	                    { className: "material-icons" },
-	                    "local_cafe"
-	                )
-	            )
-	        )
+	        'div',
+	        { className: 'type-input mdl-cell mdl-cell--6-col' },
+	        types
 	    );
 	};
 
 	exports.default = TypeInput;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var placeTypes = {
+	    restaurant: 'local_dining',
+	    cafe: 'local_cafe',
+	    subway_station: 'directions_railway',
+	    convenience_store: "local_convenience_store",
+	    bar: "local_bar"
+	};
+
+	exports.default = placeTypes;
 
 /***/ }
 /******/ ]);
