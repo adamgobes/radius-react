@@ -2,7 +2,6 @@ var app = require('../app');
 var supertest = require('supertest');
 
 describe("returns a json response with place search information", (done) => {
-    let request;
     beforeEach(() => {
         request = supertest(app)
             .get("/places")

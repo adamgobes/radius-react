@@ -20,13 +20,14 @@
         position: relative;
         top: 136px;
         text-align: center;
-        input[type='number'] {
+        input {
             font-size: 2em;
             width: 100px;
             text-align: center;
             background-color: white;
             color: $primary-color;
             border: none;
+            margin: 0 5px;
             border-bottom: 1px solid $primary-color;
             &:focus {
                 outline-width: 0;

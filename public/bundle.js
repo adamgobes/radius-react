@@ -27249,7 +27249,7 @@
 
 	        _this.state = {
 	            radius: 100,
-	            type: ""
+	            placeType: ""
 	        };
 	        _this.handleRadiusChange = _this.handleRadiusChange.bind(_this);
 	        _this.handleTypeChange = _this.handleTypeChange.bind(_this);
@@ -27270,13 +27270,17 @@
 	            $('.type-div').not(e.target).css("background", "#F44336");
 	            $(e.target).parent().parent().css("background", "white");
 	            this.setState({
-	                type: e.target.innerHTML
+	                placeType: e.target.innerHTML
 	            });
 	        }
 	    }, {
 	        key: 'handleSearch',
 	        value: function handleSearch(e) {
-	            console.log(this.state.radius, this.state.type);
+	            navigator.geolocation.getCurrentPosition(function (position) {
+	                $.get("/places?" + "radius=" + this.state.radius + "&placeType=" + this.state.placeType + "&lat=" + position.coords.latitude + "&long=" + position.coords.longitude, function (data) {
+	                    console.log(data);
+	                });
+	            }.bind(this));
 	        }
 	    }, {
 	        key: 'render',

@@ -17,15 +17,16 @@
     position: relative;
     top: 136px;
     text-align: center; }
-    .radius-input-circle .radius-input input[type='number'] {
+    .radius-input-circle .radius-input input {
       font-size: 2em;
       width: 100px;
       text-align: center;
       background-color: white;
       color: #F44336;
       border: none;
+      margin: 0 5px;
       border-bottom: 1px solid #F44336; }
-      .radius-input-circle .radius-input input[type='number']:focus {
+      .radius-input-circle .radius-input input:focus {
         outline-width: 0; }
 
 .type-input {

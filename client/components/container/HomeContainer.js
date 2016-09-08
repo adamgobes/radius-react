@@ -7,7 +7,7 @@ class HomeContainer extends React.Component {
         super()
         this.state = {
             radius: 100,
-            type: ""
+            placeType: ""
         }
         this.handleRadiusChange = this.handleRadiusChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
@@ -24,12 +24,16 @@ class HomeContainer extends React.Component {
         $('.type-div').not(e.target).css("background", "#F44336");
         $(e.target).parent().parent().css("background", "white");
         this.setState({
-            type: e.target.innerHTML
+            placeType: e.target.innerHTML
         });
     }
 
     handleSearch(e) {
-        console.log(this.state.radius, this.state.type);
+        navigator.geolocation.getCurrentPosition(function(position) {
+            $.get("/places?" + "radius=" + this.state.radius + "&placeType=" + this.state.placeType + "&lat=" + position.coords.latitude + "&long=" + position.coords.longitude, function(data) {
+                console.log(data);
+            });
+        }.bind(this));
     }
 
     render() {
