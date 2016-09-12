@@ -1,6 +1,8 @@
 import React from 'react';
 import RadiusInput from '../presentational/RadiusInput';
 import TypeInput from '../presentational/TypeInput';
+import placeTypes from '../../../utils/placeTypes';
+import axios from 'axios';
 
 class HomeContainer extends React.Component {
     constructor() {
@@ -24,14 +26,23 @@ class HomeContainer extends React.Component {
         $('.type-div').not(e.target).css("background", "#F44336");
         $(e.target).parent().parent().css("background", "white");
         this.setState({
-            placeType: e.target.innerHTML
+            placeType: placeTypes[e.target.innerHTML]
         });
     }
 
     handleSearch(e) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            $.get("/places?" + "radius=" + this.state.radius + "&placeType=" + this.state.placeType + "&lat=" + position.coords.latitude + "&long=" + position.coords.longitude, function(data) {
-                console.log(data);
+            let queryString = "/placeSearch?" + "radius=" + this.state.radius + "&placeType=" + this.state.placeType + "&lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
+            axios.get(queryString).then(function(response) {
+                this.context.router.push({
+                    pathname: '/results',
+                    state: response.data
+                });
+                response.data.results.forEach((place) => {
+                    console.log(place.name);
+                })
+            }.bind(this)).catch(function(error) {
+                console.log(error);
             });
         }.bind(this));
     }
@@ -49,6 +60,10 @@ class HomeContainer extends React.Component {
             </div>
         );
     }
+}
+
+HomeContainer.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 export default HomeContainer;

@@ -10,4 +10,8 @@ const RadiusInput = (props) => {
     );
 }
 
+RadiusInput.propTypes = {
+    onRadiusChange: React.PropTypes.func.isRequired
+}
+
 export default RadiusInput;

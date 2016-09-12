@@ -7,12 +7,16 @@ const TypeInput = (props) => {
     for (var place in placeTypes) {
         types.push(
             <div className="type-div" key={key}>
-                <a onClick={props.onTypeChange}><i className="material-icons">{placeTypes[place]}</i></a>
+                <a onClick={props.onTypeChange}><i className="material-icons">{place}</i></a>
             </div>
         );
         key += 1;
     }
     return <div className="type-input mdl-cell mdl-cell--6-col">{types}</div>;
+}
+
+TypeInput.propTypes = {
+    onTypeChange: React.PropTypes.func.isRequired,
 }
 
 export default TypeInput;

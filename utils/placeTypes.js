@@ -1,9 +1,9 @@
 const placeTypes = {
-    restaurant: 'local_dining',
-    cafe: 'local_cafe',
-    subway_station: 'directions_railway',
-    convenience_store: "local_convenience_store",
-    bar: "local_bar"
+    local_dining: 'restaurant',
+    local_cafe: 'cafe',
+    directions_railway: 'subway_station',
+    local_convenience_store: "convenience_store",
+    local_bar: "bar"
 }
 
 export default placeTypes;
