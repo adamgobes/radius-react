@@ -36,11 +36,9 @@ class HomeContainer extends React.Component {
             axios.get(queryString).then(function(response) {
                 this.context.router.push({
                     pathname: '/results',
-                    state: response.data
+                    state: response.data.results
                 });
-                response.data.results.forEach((place) => {
-                    console.log(place.name);
-                })
+                console.log(response.data.results);
             }.bind(this)).catch(function(error) {
                 console.log(error);
             });

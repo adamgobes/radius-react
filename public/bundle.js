@@ -27294,11 +27294,9 @@
 	                _axios2.default.get(queryString).then(function (response) {
 	                    this.context.router.push({
 	                        pathname: '/results',
-	                        state: response.data
+	                        state: response.data.results
 	                    });
-	                    response.data.results.forEach(function (place) {
-	                        console.log(place.name);
-	                    });
+	                    console.log(response.data.results);
 	                }.bind(this)).catch(function (error) {
 	                    console.log(error);
 	                });
@@ -28789,7 +28787,7 @@
 /* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -28819,12 +28817,54 @@
 	    }
 
 	    _createClass(ResultsContainer, [{
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h1',
-	                null,
-	                'Results'
+	                "div",
+	                { className: "mdl-grid" },
+	                this.props.location.state.map(function (place, i) {
+	                    return _react2.default.createElement(
+	                        "div",
+	                        { key: i, className: "demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col" },
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "mdl-card__title" },
+	                            _react2.default.createElement(
+	                                "h2",
+	                                { className: "mdl-card__title-text" },
+	                                place.name
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "mdl-card__supporting-text" },
+	                            place.vicinity
+	                        ),
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "mdl-card__actions mdl-card--border" },
+	                            _react2.default.createElement(
+	                                "a",
+	                                { className: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" },
+	                                "Directions"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "mdl-card__menu" },
+	                            _react2.default.createElement(
+	                                "button",
+	                                { className: "mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" },
+	                                _react2.default.createElement(
+	                                    "i",
+	                                    { className: "material-icons" },
+	                                    "add"
+	                                )
+	                            )
+	                        )
+	                    );
+	                }),
+	                ";"
 	            );
 	        }
 	    }]);
