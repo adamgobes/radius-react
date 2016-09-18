@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class ResultsContainer extends React.Component {
     constructor() {
@@ -17,7 +18,9 @@ class ResultsContainer extends React.Component {
                             <div className="mdl-card__supporting-text">{place.vicinity}</div>
                             <div className="mdl-card__actions mdl-card--border">
                                 <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                    Directions
+                                    <Link to="/directions">
+                                        Directions
+                                    </Link>
                                 </a>
                             </div>
                             <div className="mdl-card__menu">

@@ -7,6 +7,10 @@ html, body {
 
 header {
     box-shadow: none !important;
+    a {
+        color: white;
+        text-decoration: none;
+    }
 }
 
 *:not(i) {

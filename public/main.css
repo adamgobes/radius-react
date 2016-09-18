@@ -64,6 +64,9 @@ html, body {
 
 header {
   box-shadow: none !important; }
+  header a {
+    color: white;
+    text-decoration: none; }
 
 *:not(i) {
   font-family: 'Raleway' !important; }

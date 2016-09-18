@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/placeSearch", (req, res) => {
-    console.log(parseFloat(req.query.lat), parseFloat(req.query.long));
+
     const parameters = {
         location: [parseFloat(req.query.lat), parseFloat(req.query.long)],
         types: req.query.placeType,

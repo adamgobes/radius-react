@@ -21443,6 +21443,10 @@
 
 	var _ResultsContainer2 = _interopRequireDefault(_ResultsContainer);
 
+	var _MapContainer = __webpack_require__(265);
+
+	var _MapContainer2 = _interopRequireDefault(_MapContainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21470,7 +21474,8 @@
 	                    _reactRouter.Route,
 	                    { path: '/', component: _Main2.default },
 	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _ResultsContainer2.default })
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _ResultsContainer2.default }),
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/directions', component: _MapContainer2.default })
 	                )
 	            );
 	        }
@@ -27167,7 +27172,7 @@
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -27177,33 +27182,39 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(173);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Header = function Header(props) {
 	    return _react2.default.createElement(
-	        "header",
-	        { className: "mdl-layout__header" },
+	        'header',
+	        { className: 'mdl-layout__header' },
 	        _react2.default.createElement(
-	            "div",
-	            { className: "mdl-layout__header-row" },
+	            'div',
+	            { className: 'mdl-layout__header-row' },
 	            _react2.default.createElement(
-	                "span",
-	                { className: "mdl-layout-title" },
-	                "Radius"
-	            ),
-	            _react2.default.createElement("div", { className: "mdl-layout-spacer" }),
-	            _react2.default.createElement(
-	                "nav",
-	                { className: "mdl-navigation" },
+	                _reactRouter.Link,
+	                { to: '/' },
 	                _react2.default.createElement(
-	                    "a",
-	                    { className: "mdl-navigation__link", href: "" },
-	                    "About"
+	                    'span',
+	                    { className: 'mdl-layout-title' },
+	                    'Radius'
+	                )
+	            ),
+	            _react2.default.createElement('div', { className: 'mdl-layout-spacer' }),
+	            _react2.default.createElement(
+	                'nav',
+	                { className: 'mdl-navigation' },
+	                _react2.default.createElement(
+	                    'a',
+	                    { className: 'mdl-navigation__link', href: '' },
+	                    'About'
 	                ),
 	                _react2.default.createElement(
-	                    "a",
-	                    { className: "mdl-navigation__link", href: "" },
-	                    "Your Places"
+	                    'a',
+	                    { className: 'mdl-navigation__link', href: '' },
+	                    'Your Places'
 	                )
 	            )
 	        )
@@ -28787,6 +28798,103 @@
 /* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ResultsContainer = function (_React$Component) {
+	    _inherits(ResultsContainer, _React$Component);
+
+	    function ResultsContainer() {
+	        _classCallCheck(this, ResultsContainer);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ResultsContainer).call(this));
+	    }
+
+	    _createClass(ResultsContainer, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'mdl-grid' },
+	                this.props.location.state.map(function (place, i) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { key: i, className: 'demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'mdl-card__title' },
+	                            _react2.default.createElement(
+	                                'h2',
+	                                { className: 'mdl-card__title-text' },
+	                                place.name
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'mdl-card__supporting-text' },
+	                            place.vicinity
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'mdl-card__actions mdl-card--border' },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { className: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' },
+	                                _react2.default.createElement(
+	                                    _reactRouter.Link,
+	                                    { to: '/directions' },
+	                                    'Directions'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'mdl-card__menu' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { className: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect' },
+	                                _react2.default.createElement(
+	                                    'i',
+	                                    { className: 'material-icons' },
+	                                    'add'
+	                                )
+	                            )
+	                        )
+	                    );
+	                }),
+	                ';'
+	            );
+	        }
+	    }]);
+
+	    return ResultsContainer;
+	}(_react2.default.Component);
+
+	exports.default = ResultsContainer;
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -28807,72 +28915,38 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ResultsContainer = function (_React$Component) {
-	    _inherits(ResultsContainer, _React$Component);
+	var MapContainer = function (_React$Component) {
+	    _inherits(MapContainer, _React$Component);
 
-	    function ResultsContainer() {
-	        _classCallCheck(this, ResultsContainer);
+	    function MapContainer() {
+	        _classCallCheck(this, MapContainer);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ResultsContainer).call(this));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(MapContainer).call(this));
 	    }
 
-	    _createClass(ResultsContainer, [{
+	    _createClass(MapContainer, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            this.map = new google.maps.Map(this.refs.map, {
+	                center: { lat: -34.397, lng: 150.644 },
+	                zoom: 8
+	            });
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "div",
-	                { className: "mdl-grid" },
-	                this.props.location.state.map(function (place, i) {
-	                    return _react2.default.createElement(
-	                        "div",
-	                        { key: i, className: "demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col" },
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "mdl-card__title" },
-	                            _react2.default.createElement(
-	                                "h2",
-	                                { className: "mdl-card__title-text" },
-	                                place.name
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "mdl-card__supporting-text" },
-	                            place.vicinity
-	                        ),
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "mdl-card__actions mdl-card--border" },
-	                            _react2.default.createElement(
-	                                "a",
-	                                { className: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" },
-	                                "Directions"
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "mdl-card__menu" },
-	                            _react2.default.createElement(
-	                                "button",
-	                                { className: "mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" },
-	                                _react2.default.createElement(
-	                                    "i",
-	                                    { className: "material-icons" },
-	                                    "add"
-	                                )
-	                            )
-	                        )
-	                    );
-	                }),
-	                ";"
+	                null,
+	                _react2.default.createElement("div", { ref: "map", style: { height: "100%" } })
 	            );
 	        }
 	    }]);
 
-	    return ResultsContainer;
+	    return MapContainer;
 	}(_react2.default.Component);
 
-	exports.default = ResultsContainer;
+	exports.default = MapContainer;
 
 /***/ }
 /******/ ]);
