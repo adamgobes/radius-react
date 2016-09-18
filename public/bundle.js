@@ -27305,7 +27305,11 @@
 	                _axios2.default.get(queryString).then(function (response) {
 	                    this.context.router.push({
 	                        pathname: '/results',
-	                        state: response.data.results
+	                        state: {
+	                            results: response.data.results,
+	                            userLat: position.coords.latitude,
+	                            userLong: position.coords.longitude
+	                        }
 	                    });
 	                    console.log(response.data.results);
 	                }.bind(this)).catch(function (error) {
@@ -28830,12 +28834,27 @@
 	    }
 
 	    _createClass(ResultsContainer, [{
+	        key: 'directionsRedirect',
+	        value: function directionsRedirect(destLat, destLong) {
+	            this.context.router.push({
+	                pathname: "/directions",
+	                state: {
+	                    userLat: this.props.location.state.userLat,
+	                    userLong: this.props.location.state.userLong,
+	                    destLat: destLat,
+	                    destLong: destLong
+	                }
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'mdl-grid' },
-	                this.props.location.state.map(function (place, i) {
+	                this.props.location.state.results.map(function (place, i) {
 	                    return _react2.default.createElement(
 	                        'div',
 	                        { key: i, className: 'demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col' },
@@ -28858,12 +28877,9 @@
 	                            { className: 'mdl-card__actions mdl-card--border' },
 	                            _react2.default.createElement(
 	                                'a',
-	                                { className: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' },
-	                                _react2.default.createElement(
-	                                    _reactRouter.Link,
-	                                    { to: '/directions' },
-	                                    'Directions'
-	                                )
+	                                { className: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect',
+	                                    onClick: _this2.directionsRedirect.bind(_this2, place.geometry.location.lat, place.geometry.location.lng) },
+	                                'Directions'
 	                            )
 	                        ),
 	                        _react2.default.createElement(
@@ -28888,6 +28904,10 @@
 
 	    return ResultsContainer;
 	}(_react2.default.Component);
+
+	ResultsContainer.contextTypes = {
+	    router: _react2.default.PropTypes.object.isRequired
+	};
 
 	exports.default = ResultsContainer;
 
@@ -28927,9 +28947,37 @@
 	    _createClass(MapContainer, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            this.map = new google.maps.Map(this.refs.map, {
-	                center: { lat: -34.397, lng: 150.644 },
-	                zoom: 8
+
+	            var userLocation = {
+	                lat: this.props.location.state.userLat,
+	                lng: this.props.location.state.userLong
+	            };
+
+	            var destination = {
+	                lat: this.props.location.state.destLat,
+	                lng: this.props.location.state.destLong
+	            };
+	            var map = new google.maps.Map(this.refs.map, {
+	                center: userLocation,
+	                zoom: 16
+	            });
+
+	            var directionsDisplay = new google.maps.DirectionsRenderer({
+	                map: map
+	            });
+	            // Set destination, origin and travel mode.
+	            var request = {
+	                destination: destination,
+	                origin: userLocation,
+	                travelMode: google.maps.TravelMode.WALKING
+	            };
+	            // Pass the directions request to the directions service.
+	            var directionsService = new google.maps.DirectionsService();
+	            directionsService.route(request, function (response, status) {
+	                if (status == google.maps.DirectionsStatus.OK) {
+	                    // Display the route on the map.
+	                    directionsDisplay.setDirections(response);
+	                }
 	            });
 	        }
 	    }, {
@@ -28937,8 +28985,8 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "div",
-	                null,
-	                _react2.default.createElement("div", { ref: "map", style: { height: "100%" } })
+	                { className: "map-container" },
+	                _react2.default.createElement("div", { ref: "map", style: { height: "75%" } })
 	            );
 	        }
 	    }]);

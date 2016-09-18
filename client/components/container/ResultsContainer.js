@@ -6,10 +6,22 @@ class ResultsContainer extends React.Component {
         super();
     }
 
+    directionsRedirect(destLat, destLong) {
+        this.context.router.push({
+            pathname: "/directions",
+            state: {
+                userLat: this.props.location.state.userLat,
+                userLong: this.props.location.state.userLong,
+                destLat,
+                destLong
+            }
+        });
+    }
+
     render() {
         return (
             <div className="mdl-grid">
-                {this.props.location.state.map((place, i) => {
+                {this.props.location.state.results.map((place, i) => {
                     return (
                         <div key={i} className="demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
                             <div className="mdl-card__title">
@@ -17,10 +29,9 @@ class ResultsContainer extends React.Component {
                             </div>
                             <div className="mdl-card__supporting-text">{place.vicinity}</div>
                             <div className="mdl-card__actions mdl-card--border">
-                                <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                    <Link to="/directions">
-                                        Directions
-                                    </Link>
+                                <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                    onClick={this.directionsRedirect.bind(this, place.geometry.location.lat, place.geometry.location.lng)}>
+                                    Directions
                                 </a>
                             </div>
                             <div className="mdl-card__menu">
@@ -34,8 +45,10 @@ class ResultsContainer extends React.Component {
             </div>
         );
     }
+}
 
-
+ResultsContainer.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 export default ResultsContainer
