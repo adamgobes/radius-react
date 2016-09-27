@@ -8,6 +8,9 @@ const app = express();
 const googlePlaces = new GooglePlaces("AIzaSyD3msJkEFJtzw8vRy-uV9S7KFR0e-FfhU0", "json");
 
 
+app.set("port", process.env.PORT || 3000);
+
+
 app.use(express.static(path.resolve(__dirname, "public")));
 
 app.get("/", (req, res) => {
@@ -28,7 +31,7 @@ app.get("/placeSearch", (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(app.get("port"), () => {
     console.log("App running on port 3000");
 });
 
