@@ -21447,6 +21447,10 @@
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
+	var _About = __webpack_require__(266);
+
+	var _About2 = _interopRequireDefault(_About);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21475,7 +21479,8 @@
 	                    { path: '/', component: _Main2.default },
 	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default }),
 	                    _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _ResultsContainer2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: '/directions', component: _MapContainer2.default })
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/directions', component: _MapContainer2.default }),
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default })
 	                )
 	            );
 	        }
@@ -27207,14 +27212,9 @@
 	                'nav',
 	                { className: 'mdl-navigation' },
 	                _react2.default.createElement(
-	                    'a',
-	                    { className: 'mdl-navigation__link', href: '' },
+	                    _reactRouter.Link,
+	                    { className: 'mdl-navigation__link', to: 'about' },
 	                    'About'
-	                ),
-	                _react2.default.createElement(
-	                    'a',
-	                    { className: 'mdl-navigation__link', href: '' },
-	                    'Your Places'
 	                )
 	            )
 	        )
@@ -28995,6 +28995,45 @@
 	}(_react2.default.Component);
 
 	exports.default = MapContainer;
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var About = function About() {
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "radius-input-circle" },
+	        _react2.default.createElement(
+	            "div",
+	            { className: "about-div" },
+	            _react2.default.createElement(
+	                "p",
+	                null,
+	                "Radius is a web application built primarily with ReactJS designed to simplify the process of finding places near you. It is fully open source and you can check out the source code",
+	                _react2.default.createElement(
+	                    "a",
+	                    { href: "https://github.com/adamgobes/radius-react", target: "_about" },
+	                    " here"
+	                )
+	            )
+	        )
+	    );
+	};
+
+	exports.default = About;
 
 /***/ }
 /******/ ]);

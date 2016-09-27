@@ -1,0 +1,15 @@
+.about-div {
+    width: 78%;
+    margin: auto;
+    color: $primary-color;
+    position: relative;
+    top: 46%;
+    left: 5%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 1.3em;
+    a {
+        color: teal;
+    }
+}

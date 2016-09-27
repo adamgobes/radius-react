@@ -59,6 +59,20 @@
     .submit-btn-container button:hover {
       background-color: white; }
 
+.about-div {
+  width: 78%;
+  margin: auto;
+  color: #F44336;
+  position: relative;
+  top: 46%;
+  left: 5%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 1.3em; }
+  .about-div a {
+    color: teal; }
+
 html, body {
   background-color: #F44336; }
 

@@ -8,8 +8,7 @@ const Header = (props) => {
                 <Link to="/"><span className="mdl-layout-title">Radius</span></Link>
                 <div className="mdl-layout-spacer"></div>
                 <nav className="mdl-navigation">
-                    <a className="mdl-navigation__link" href="">About</a>
-                    <a className="mdl-navigation__link" href="">Your Places</a>
+                    <Link className="mdl-navigation__link" to="about">About</Link>
                 </nav>
             </div>
         </header>
