@@ -19,6 +19,13 @@ class ResultsContainer extends React.Component {
     }
 
     render() {
+        if (this.props.location.state.results.length === 0) {
+            return (
+                <div className="none-found">
+                    <h4> No places found. Try a larger radius! </h4>
+                </div>
+            )
+        }
         return (
             <div className="mdl-grid">
                 {this.props.location.state.results.map((place, i) => {

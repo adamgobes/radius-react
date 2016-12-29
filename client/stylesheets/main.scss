@@ -18,3 +18,12 @@ header {
 *:not(i) {
     font-family: 'Raleway' !important;
 }
+
+.none-found {
+    width: 720px;
+    margin: auto;
+    h4 {
+        text-align: center;
+        color: white;
+    }
+}

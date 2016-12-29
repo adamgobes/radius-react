@@ -27357,6 +27357,7 @@
 	    }, {
 	        key: 'handleSearch',
 	        value: function handleSearch(e) {
+	            $('.mdl-progress').css("display", "block");
 	            navigator.geolocation.getCurrentPosition(function (position) {
 	                var queryString = "/placeSearch?" + "radius=" + this.state.radius + "&placeType=" + this.state.placeType + "&lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
 	                _axios2.default.get(queryString).then(function (response) {
@@ -27392,7 +27393,8 @@
 	                            onClick: this.handleSearch },
 	                        'Find'
 	                    )
-	                )
+	                ),
+	                _react2.default.createElement('div', { id: 'p2', className: 'mdl-progress mdl-js-progress mdl-progress__indeterminate' })
 	            );
 	        }
 	    }]);
@@ -27429,7 +27431,12 @@
 	        _react2.default.createElement(
 	            "div",
 	            { className: "radius-input" },
-	            _react2.default.createElement("input", { type: "number", defaultValue: "100", onChange: props.onRadiusChange })
+	            _react2.default.createElement("input", { type: "number", defaultValue: "100", onChange: props.onRadiusChange }),
+	            _react2.default.createElement(
+	                "h6",
+	                null,
+	                "Meters"
+	            )
 	        )
 	    );
 	};
@@ -28908,6 +28915,17 @@
 	        value: function render() {
 	            var _this2 = this;
 
+	            if (this.props.location.state.results.length === 0) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: 'none-found' },
+	                    _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        ' No places found. Try a larger radius! '
+	                    )
+	                );
+	            }
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'mdl-grid' },
