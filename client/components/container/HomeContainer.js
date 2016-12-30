@@ -2,6 +2,7 @@ import React from 'react';
 import RadiusInput from '../presentational/RadiusInput';
 import TypeInput from '../presentational/TypeInput';
 import placeTypes from '../../../utils/placeTypes';
+import Loading from '../presentational/Loading';
 import axios from 'axios';
 
 class HomeContainer extends React.Component {
@@ -9,7 +10,8 @@ class HomeContainer extends React.Component {
         super()
         this.state = {
             radius: 100,
-            placeType: ""
+            placeType: "",
+            isLoading: false
         }
         this.handleRadiusChange = this.handleRadiusChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
@@ -31,7 +33,9 @@ class HomeContainer extends React.Component {
     }
 
     handleSearch(e) {
-        $('.mdl-progress').css("display", "block");
+        this.setState({
+            isLoading: true
+        });
         navigator.geolocation.getCurrentPosition(function(position) {
             let queryString = "/placeSearch?" + "radius=" + this.state.radius + "&placeType=" + this.state.placeType + "&lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
             axios.get(queryString).then(function(response) {
@@ -60,7 +64,7 @@ class HomeContainer extends React.Component {
                         className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                         onClick={this.handleSearch}>Find</button>
                 </div>
-                <div id="p2" className="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                <Loading isLoading={this.state.isLoading} />
             </div>
         );
     }
